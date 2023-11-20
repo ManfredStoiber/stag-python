@@ -1,0 +1,10 @@
+[submodule "submodules/pybind11"]
+	path = submodules/pybind11
+	url = https://github.com/pybind/pybind11
+	branch = stable
+[submodule "submodules/pybind11_opencv_numpy"]
+	path = submodules/pybind11_opencv_numpy
+	url = https://github.com/edmBernard/pybind11_opencv_numpy
+[submodule "submodules/stag"]
+	path = submodules/stag
+	url = https://github.com/ManfredStoiber/stag
