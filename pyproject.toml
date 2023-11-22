@@ -1,0 +1,35 @@
+[project]
+name = "stag-python"
+version = "1.0.0"
+authors = [
+    {name = "Manfred Stoiber", email = "manfred.stoiber@gmail.com"}
+]
+description = "STag - A Stable, Occlusion-Resistant Fiducial Marker System"
+requires-python = ">=3.7"
+readme = "README.md"
+dependencies = [
+    "numpy"
+]
+
+[build-system]
+requires = [
+    "setuptools",
+    "oldest-supported-numpy; ((python_version!='3.7' and python_version!='3.8') or platform_machine!='aarch64') and python_version!='3.12' and (python_version!='3.10' or platform_system!='Windows' or platform_python_implementation!='PyPy') and (python_version!='3.7' or platform_system!='Darwin' or platform_python_implementation!='PyPy' or platform_machine!='x86_64')",
+    "numpy==1.21.6; (python_version=='3.7' or python_version=='3.8') and platform_machine=='aarch64'",
+    "numpy==1.26.2; python_version=='3.12'",
+    "numpy; python_version=='3.7' and platform_system=='Darwin' and platform_python_implementation=='PyPy' and platform_machine=='x86_64'",
+    "requests",
+    "urllib3<2" # requests does not work with urllib>2 on python 3.7, since openssl1.1.1+ is not available
+]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools]
+license-files = [
+    "submodules/*/LICENSE",
+    "LICENSE"
+]
+
+[tool.cibuildwheel.windows]
+before-build = "pip install delvewheel"
+repair-wheel-command = "python scripts/windows_repair_wheel.py {dest_dir} {wheel}"

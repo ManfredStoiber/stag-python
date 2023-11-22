@@ -23,15 +23,14 @@ set(CMAKE_MODULE_PATH
         ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 find_package(OpenCV 4 REQUIRED)
-find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(NumPy REQUIRED)
 
 add_subdirectory(submodules/pybind11)
 include_directories("submodules/pybind11/include")
 include_directories("submodules/pybind11_opencv_numpy")
 
-pybind11_add_module(stag
-        StagPy.cpp
+pybind11_add_module(_core
+        src/stag/StagModule.cpp
         submodules/pybind11_opencv_numpy/ndarray_converter.cpp
 )
 
@@ -40,6 +39,7 @@ file(GLOB SRC_FILE2 "submodules/stag/src/ED/*.c*")
 
 include_directories(
     ${OpenCV_INCLUDE_DIRS}
+    ${NUMPY_INCLUDES}
     stag/
     stag/ED/
 )
@@ -54,9 +54,7 @@ target_link_libraries(
 )
 
 target_link_libraries(
-    stag PRIVATE
+    _core PRIVATE
     ${OpenCV_LIBS}
     staglib
 )
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/app)

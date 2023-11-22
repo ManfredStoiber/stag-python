@@ -5,6 +5,8 @@
 /lib/
 /stag_python.egg-info/
 /cmake-build-debug/
+/dist/
+/wheelhouse/
 
 # Compiled Object files
 *.slo
