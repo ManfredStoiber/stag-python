@@ -1,5 +1,7 @@
 [![Build and upload to PyPI](https://github.com/ManfredStoiber/stag-python/actions/workflows/python-publish.yml/badge.svg)](https://github.com/ManfredStoiber/stag-python/actions/workflows/python-publish.yml)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/stag-python)
+![Pepy Total Downlods](https://img.shields.io/pepy/dt/stag-python)
+
 
 
 # Python Wrapper for [STag - A Stable, Occlusion-Resistant Fiducial Marker System](https://github.com/ManfredStoiber/stag)
