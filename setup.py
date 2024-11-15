@@ -1,5 +1,5 @@
 # This file is heavily inspired by: https://github.com/pybind/cmake_example/blob/master/setup.py
-opencv_version = "4.8.1"
+opencv_version = "4.10.0"
 
 import os
 import re
@@ -12,9 +12,7 @@ import zipfile
 
 from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext
-from setuptools.command.install_lib import install_lib
 
-from distutils.dir_util import mkpath
 
 def get_install_path():
     return sys.prefix
