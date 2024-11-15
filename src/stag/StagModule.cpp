@@ -16,7 +16,7 @@ py::tuple cornersToTuple(const std::vector<std::vector<cv::Point2f>>& corners) {
     for (int i=0; i<corners.size(); i++) {
         std::vector<std::vector<float>> contours_vec;
         for (cv::Point2f pt : corners[i]) {
-            contours_vec.push_back({static_cast<float>((int)pt.x), static_cast<float>((int)pt.y)});
+            contours_vec.push_back({pt.x, pt.y});
         }
         py::array_t<std::float_t> contours = py::cast(contours_vec);
         ret[i] = contours.reshape({1, 4, 2});
